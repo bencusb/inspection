@@ -1,22 +1,14 @@
-let baseData = {};
 let savedData = {};
 
-async function loadBaseJSON() {
+async function loadChecklistJSON() {
     const res = await fetch("checklist.json");
-    baseData = await res.json();
-    savedData = JSON.parse(localStorage.getItem("checklistState") || "{}");
-    mergeBaseIntoSaved();
+    savedData = await res.json();
+    // Load any localStorage overrides
+    const localStorage_data = localStorage.getItem("checklistState");
+    if (localStorage_data) {
+        savedData = JSON.parse(localStorage_data);
+    }
     render();
-}
-
-function mergeBaseIntoSaved() {
-    Object.keys(baseData).forEach(section => {
-        if (!savedData[section]) savedData[section] = {};
-        baseData[section].forEach(item => {
-            if (!(item in savedData[section])) savedData[section][item] = false;
-        });
-    });
-    localStorage.setItem("checklistState", JSON.stringify(savedData));
 }
 
 function saveState() {
@@ -101,4 +93,52 @@ function render() {
     });
 }
 
-loadBaseJSON();
+// Export functionality
+function exportState() {
+    const dataToExport = {
+        timestamp: new Date().toISOString(),
+        state: savedData
+    };
+    const dataStr = JSON.stringify(dataToExport, null, 2);
+    const dataBlob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `checklist-export-${new Date().toISOString().split('T')[0]}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+}
+
+// Import functionality
+function importState() {
+    document.getElementById("fileInput").click();
+}
+
+document.getElementById("fileInput").addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        try {
+            const imported = JSON.parse(e.target.result);
+            const importedState = imported.state || imported;
+            savedData = importedState;
+            saveState();
+            render();
+            alert("Checklist imported successfully!");
+        } catch (err) {
+            alert("Error importing file: " + err.message);
+        }
+    };
+    reader.readAsText(file);
+    
+    // Reset file input
+    event.target.value = "";
+});
+
+// Setup event listeners
+document.getElementById("exportBtn").addEventListener("click", exportState);
+document.getElementById("importBtn").addEventListener("click", importState);
+
+loadChecklistJSON();

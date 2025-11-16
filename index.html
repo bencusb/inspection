@@ -5,12 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>House Handover Checklist</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  body {
+    padding-top: 80px;
+  }
+</style>
 </head>
-<body class="bg-gray-100 min-h-screen p-6">
+<body class="bg-gray-100 min-h-screen">
 
-<h1 class="text-3xl font-bold text-blue-600 mb-6">🏠 House Handover Checklist</h1>
+<!-- Fixed Header -->
+<header class="header-fixed">
+  <div class="flex justify-between items-center px-6 py-4">
+    <h1 class="text-3xl font-bold text-blue-600">House Handover Checklist</h1>
+    <div class="flex gap-2">
+      <button id="exportBtn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold">
+        Export
+      </button>
+      <button id="importBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-semibold">
+        Import
+      </button>
+    </div>
+  </div>
+</header>
 
-<div id="checklist" class="space-y-6">Loading…</div>
+<!-- Hidden file input for import -->
+<input type="file" id="fileInput" accept=".json" style="display: none;">
+
+<!-- Main content -->
+<div id="checklist" class="space-y-6 p-6">Loading…</div>
 
 <!-- Load external JS -->
 <script src="checklist.js"></script>

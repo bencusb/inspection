@@ -1,80 +1,83 @@
 {
-  "Háló 1": [
-    "Konnektorok mennek",
-    "Kapcsolók mennek",
-    "Nyílászárók jól zárnak",
-    "Ajtó jól zár",
-    "Burkolatok rendben",
-    "Burkolatok sérülésmentes",
-    "Festési hibák",
-    "Falak egyenessége, repedések"
-  ],
-
-  "Háló 2": [
-    "Konnektorok mennek",
-    "Kapcsolók mennek",
-    "Nyílászárók jól zárnak",
-    "Ajtó jól zár",
-    "Burkolatok rendben",
-    "Burkolatok sérülésmentes",
-    "Festési hibák",
-    "Falak egyenessége, repedések"
-  ],
-
-  "Nappali": [
-    "Konnektorok mennek",
-    "Kapcsolók mennek",
-    "Nyílászárók jól zárnak",
-    "Ajtók jól zárnak",
-    "Burkolatok rendben",
-    "Burkolatok sérülésmentes",
-    "Festési hibák",
-    "Falak egyenessége, repedések",
-    "Elektromos kiállások a helyükön vannak"
-  ],
-
-  "Kamra – Gépészet": [
-    "Ajtók jól zárnak",
-    "Hőszivattyú működik, nincs hibakód",
-    "Padlófűtési körök rendben",
-    "Fűtési rendszer nyomása megfelelő",
-    "Termosztát működik",
-    "Elektromos elosztótábla feliratozása helyes",
-    "Fi-relé leold és visszakapcsolható",
-    "Kondenzvíz elvezetés működik",
-    "Vízóra rendben, nincs szivárgás"
-  ],
-
-  "Konyha (bútor nélkül)": [
-    "Konnektorok mennek",
-    "Kapcsolók mennek",
-    "Burkolatok rendben",
-    "Burkolatok sérülésmentes",
-    "Festési hibák",
-    "Víz jön",
-    "Szennyvíz megy",
-    "Csőkiállások sérülésmentesek",
-    "Mosogatógép kiállás rendben",
-    "Víz / szennyvíz kiállások a helyükön vannak",
-    "Elektromos kiállások a tervezett helyen"
-  ],
-
-  "WC (bútor nélkül)": [
-    "Kapcsolók mennek",
-    "Burkolatok rendben",
-    "Burkolatok sérülésmentes",
-    "Festési hibák",
-    "Víz jön",
-    "Szennyvíz megy",
-    "WC tartály működik"
-  ],
-
-  "Általános": [
-    "Villanyóra állás rögzítve",
-    "Kulcsok / távirányítók / tartozékok átadva",
-    "Minden ajtó és ablak kilincs stabil",
-    "Küszöbök sértetlenek",
-    "Bejárati ajtó jól zár",
-    "Erkély / terasz vízelvezetés működik (ha van)"
-  ]
+  "Háló 1": {
+    "Konnektorok mennek": false,
+    "Kapcsolók mennek": false,
+    "Nyílászárók jól zárnak": false,
+    "Ajtó jól zár": false,
+    "Burkolatok rendben": false,
+    "Burkolatok sérülésmentes": false,
+    "Festési hibák": false,
+    "Falak egyenessége, repedések": false
+  },
+  "Háló 2": {
+    "Konnektorok mennek": false,
+    "Kapcsolók mennek": false,
+    "Nyílászárók jól zárnak": false,
+    "Ajtó jól zár": false,
+    "Burkolatok rendben": false,
+    "Burkolatok sérülésmentes": false,
+    "Festési hibák": false,
+    "Falak egyenessége, repedések": false
+  },
+  "WC": {
+    "Kapcsolók mennek": false,
+    "Burkolatok rendben": false,
+    "Burkolatok sérülésmentes": false,
+    "Festési hibák": false,
+    "Víz jön": false,
+    "Szennyvíz megy": false,
+    "WC tartály működik": false
+  },
+  "Kamra – Gépészet": {
+    "Ajtók jól zárnak": false,
+    "Hőszivattyú működik, nincs hibakód": false,
+    "Padlófűtési körök rendben": false,
+    "Fűtési rendszer nyomása megfelelő": false,
+    "Termosztát működik": false,
+    "Elektromos elosztótábla feliratozása helyes": false,
+    "Fi-relé leold és visszakapcsolható": false,
+    "Kondenzvíz elvezetés működik": false,
+    "Vízóra rendben, nincs szivárgás": false
+  },
+  "Fürdő": {
+    "Konnektorok mennek": false,
+    "Kapcsolók mennek": false,
+    "Burkolatok rendben": false,
+    "Szárító üzemel": false,
+    "Mosógép víz / szennyvíz megy": false,
+    "Csap víz / szennyvíz megy": false,
+    "Kád / zuhany csaptelep működik": false
+  },
+  "Nappali": {
+    "Konnektorok mennek": false,
+    "Kapcsolók mennek": false,
+    "Nyílászárók jól zárnak": false,
+    "Ajtók jól zárnak": false,
+    "Burkolatok rendben": false,
+    "Burkolatok sérülésmentes": false,
+    "Festési hibák": false,
+    "Falak egyenessége, repedések": false,
+    "Elektromos kiállások a helyükön vannak": false
+  },
+  "Konyha": {
+    "Konnektorok mennek": false,
+    "Kapcsolók mennek": false,
+    "Burkolatok rendben": false,
+    "Burkolatok sérülésmentes": false,
+    "Festési hibák": false,
+    "Víz jön": false,
+    "Szennyvíz megy": false,
+    "Csőkiállások sérülésmentesek": false,
+    "Mosogatógép kiállás rendben": false,
+    "Víz / szennyvíz kiállások a helyükön vannak": false,
+    "Elektromos kiállások a tervezett helyen": false
+  },
+  "Általános": {
+    "Villanyóra állás rögzítve": false,
+    "Kulcsok / távirányítók / tartozékok átadva": false,
+    "Minden ajtó és ablak kilincs stabil": false,
+    "Küszöbök sértetlenek": false,
+    "Bejárati ajtó jól zár": false,
+    "Erkély / terasz vízelvezetés működik (ha van)": false
+  }
 }
