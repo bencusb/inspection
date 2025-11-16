@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>House Handover Checklist</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        margin: 0;
+        padding: 20px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h2 {
+        margin-top: 30px;
+        font-size: 1.4em;
+        color: #333;
+        border-left: 5px solid #0077ff;
+        padding-left: 10px;
+    }
+
+    .section {
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        margin: 6px 0;
+    }
+
+    .item input[type="checkbox"] {
+        margin-right: 10px;
+        transform: scale(1.3);
+    }
+
+    .add-box {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .add-box input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    .add-box button {
+        margin-left: 10px;
+        padding: 8px 14px;
+        border: none;
+        background-color: #0077ff;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .add-box button:hover {
+        background-color: #005fcc;
+    }
+</style>
+
+</head>
+<body>
+
+<h1>🏠 House Handover Checklist</h1>
+
+<div id="checklist"></div>
+
+<script>
+const data = {
+    "Háló 1": [
+        "Konnektorok mennek",
+        "Kapcsolók mennek",
+        "Nyílászárók jól zárnak",
+        "Ajtó jól zár",
+        "Burkolatok rendben",
+        "Burkolatok sérülésmentes",
+        "Festési hibák",
+        "Falak egyenessége, repedések"
+    ],
+    "Háló 2": [
+        "Konnektorok mennek",
+        "Kapcsolók mennek",
+        "Nyílászárók jól zárnak",
+        "Ajtó jól zár",
+        "Burkolatok rendben",
+        "Burkolatok sérülésmentes",
+        "Festési hibák",
+        "Falak egyenessége, repedések"
+    ],
+    "Nappali": [
+        "Konnektorok mennek",
+        "Kapcsolók mennek",
+        "Nyílászárók jól zárnak",
+        "Ajtók jól zárnak",
+        "Burkolatok rendben",
+        "Burkolatok sérülésmentes",
+        "Festési hibák",
+        "Falak egyenessége, repedések",
+        "Elektromos kiállások a helyükön vannak"
+    ],
+    "Kamra / Gépészet – Helyiség": [
+        "Konnektorok mennek",
+        "Kapcsolók mennek",
+        "Nyílászárók jól zárnak",
+        "Ajtó jól zár",
+        "Burkolatok rendben",
+        "Festési hibák"
+    ],
+    "Kamra / Gépészet – Gépészet": [
+        "Hőszivattyú működik, nincs hibakód",
+        "Padlófűtési körök rendben",
+        "Fűtési rendszer nyomása megfelelő",
+        "Termosztát működik",
+        "Elektromos elosztótábla feliratozása helyes",
+        "Fi-relé leold és visszakapcsolható",
+        "Kondenzvíz elvezetés működik",
+        "Vízóra rendben, nincs szivárgás"
+    ],
+    "Konyha (bútor nélkül)": [
+        "Konnektorok mennek",
+        "Kapcsolók mennek",
+        "Burkolatok rendben",
+        "Burkolatok sérülésmentes",
+        "Festési hibák",
+        "Víz jön",
+        "Víz megy",
+        "Csaptelep stabil (ha van)",
+        "Csőkiállások sérülésmentesek",
+        "Lejtés megfelelő",
+        "Mosogatógép kiállás rendben",
+        "Víz / szennyvíz kiállások a helyükön vannak",
+        "Elektromos kiállások a tervezett helyen"
+    ],
+    "Általános": [
+        "Villanyóra állás rögzítve",
+        "Kulcsok / távirányítók / tartozékok átadva",
+        "Minden ajtó és ablak kilincs stabil",
+        "Küszöbök sértetlenek",
+        "Bejárati ajtó jól zár",
+        "Erkély / terasz vízelvezetés működik (ha van)"
+    ]
+};
+
+// Load saved data from localStorage
+let saved = JSON.parse(localStorage.getItem("checklistData") || "{}");
+
+function save() {
+    localStorage.setItem("checklistData", JSON.stringify(saved));
+}
+
+function render() {
+    const container = document.getElementById("checklist");
+    container.innerHTML = "";
+
+    Object.keys(data).forEach(section => {
+        const div = document.createElement("div");
+        div.className = "section";
+
+        const title = document.createElement("h2");
+        title.textContent = section;
+        div.appendChild(title);
+
+        data[section].forEach(item => {
+            const id = section + "::" + item;
+            if (!(section in saved)) saved[section] = {};
+
+            const row = document.createElement("div");
+            row.className = "item";
+
+            const box = document.createElement("input");
+            box.type = "checkbox";
+            box.checked = saved[section][item] || false;
+            box.onchange = () => {
+                saved[section][item] = box.checked;
+                save();
+            };
+
+            const label = document.createElement("span");
+            label.textContent = item;
+
+            row.appendChild(box);
+            row.appendChild(label);
+            div.appendChild(row);
+        });
+
+        // Add item input
+        const addBox = document.createElement("div");
+        addBox.className = "add-box";
+
+        const input = document.createElement("input");
+        input.placeholder = "Add new item...";
+
+        const btn = document.createElement("button");
+        btn.textContent = "+";
+        btn.onclick = () => {
+            if (!input.value.trim()) return;
+            data[section].push(input.value.trim());
+            saved[section][input.value.trim()] = false;
+            save();
+            render();
+        };
+
+        addBox.appendChild(input);
+        addBox.appendChild(btn);
+        div.appendChild(addBox);
+
+        container.appendChild(div);
+    });
+}
+
+render();
+</script>
+
+</body>
+</html>
