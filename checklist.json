@@ -1,0 +1,80 @@
+{
+  "Háló 1": [
+    "Konnektorok mennek",
+    "Kapcsolók mennek",
+    "Nyílászárók jól zárnak",
+    "Ajtó jól zár",
+    "Burkolatok rendben",
+    "Burkolatok sérülésmentes",
+    "Festési hibák",
+    "Falak egyenessége, repedések"
+  ],
+
+  "Háló 2": [
+    "Konnektorok mennek",
+    "Kapcsolók mennek",
+    "Nyílászárók jól zárnak",
+    "Ajtó jól zár",
+    "Burkolatok rendben",
+    "Burkolatok sérülésmentes",
+    "Festési hibák",
+    "Falak egyenessége, repedések"
+  ],
+
+  "Nappali": [
+    "Konnektorok mennek",
+    "Kapcsolók mennek",
+    "Nyílászárók jól zárnak",
+    "Ajtók jól zárnak",
+    "Burkolatok rendben",
+    "Burkolatok sérülésmentes",
+    "Festési hibák",
+    "Falak egyenessége, repedések",
+    "Elektromos kiállások a helyükön vannak"
+  ],
+
+  "Kamra / Gépészet – Helyiség": [
+    "Konnektorok mennek",
+    "Kapcsolók mennek",
+    "Nyílászárók jól zárnak",
+    "Ajtó jól zár",
+    "Burkolatok rendben",
+    "Festési hibák"
+  ],
+
+  "Kamra / Gépészet – Gépészet": [
+    "Hőszivattyú működik, nincs hibakód",
+    "Padlófűtési körök rendben",
+    "Fűtési rendszer nyomása megfelelő",
+    "Termosztát működik",
+    "Elektromos elosztótábla feliratozása helyes",
+    "Fi-relé leold és visszakapcsolható",
+    "Kondenzvíz elvezetés működik",
+    "Vízóra rendben, nincs szivárgás"
+  ],
+
+  "Konyha (bútor nélkül)": [
+    "Konnektorok mennek",
+    "Kapcsolók mennek",
+    "Burkolatok rendben",
+    "Burkolatok sérülésmentes",
+    "Festési hibák",
+    "Víz jön",
+    "Víz megy",
+    "Csaptelep stabil (ha van)",
+    "Csőkiállások sérülésmentesek",
+    "Lejtés megfelelő",
+    "Mosogatógép kiállás rendben",
+    "Víz / szennyvíz kiállások a helyükön vannak",
+    "Elektromos kiállások a tervezett helyen"
+  ],
+
+  "Általános": [
+    "Villanyóra állás rögzítve",
+    "Kulcsok / távirányítók / tartozékok átadva",
+    "Minden ajtó és ablak kilincs stabil",
+    "Küszöbök sértetlenek",
+    "Bejárati ajtó jól zár",
+    "Erkély / terasz vízelvezetés működik (ha van)"
+  ]
+}

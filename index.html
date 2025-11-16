@@ -6,193 +6,69 @@
 <title>House Handover Checklist</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f7f7f7;
-        margin: 0;
-        padding: 20px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    h2 {
-        margin-top: 30px;
-        font-size: 1.4em;
-        color: #333;
-        border-left: 5px solid #0077ff;
-        padding-left: 10px;
-    }
-
-    .section {
-        background: #fff;
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 6px 0;
-    }
-
-    .left {
-        display: flex;
-        align-items: center;
-    }
-
-    .item input[type="checkbox"] {
-        margin-right: 10px;
-        transform: scale(1.3);
-    }
-
-    .delete-btn {
-        padding: 2px 8px;
-        font-size: 14px;
-        background: #e74c3c;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .delete-btn:hover {
-        background: #c0392b;
-    }
-
-    .add-box {
-        display: flex;
-        margin-top: 10px;
-    }
-
-    .add-box input {
-        flex: 1;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-    }
-
-    .add-box button {
-        margin-left: 10px;
-        padding: 8px 14px;
-        border: none;
-        background-color: #0077ff;
-        color: white;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-
-    .add-box button:hover {
-        background-color: #005fcc;
-    }
+    body { font-family: Arial; background: #f5f5f5; padding: 20px; max-width: 800px; margin: auto; }
+    h2 { margin-top: 30px; border-left: 5px solid #0077ff; padding-left: 10px; }
+    .section { background: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+    .item { display: flex; justify-content: space-between; align-items: center; margin: 6px 0; }
+    .left { display: flex; align-items: center; }
+    .item input[type="checkbox"] { margin-right: 10px; transform: scale(1.2); }
+    .delete-btn { background: #e74c3c; color: #fff; border: none; border-radius: 5px; cursor: pointer; padding: 4px 8px; }
+    .add-box { display: flex; margin-top: 10px; }
+    .add-box input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+    .add-box button { margin-left: 10px; padding: 8px 12px; background: #0077ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
 </style>
 </head>
 
 <body>
 
 <h1>🏠 House Handover Checklist</h1>
-
-<div id="checklist"></div>
+<div id="checklist">Loading…</div>
 
 <script>
-const initialData = {
-    "Háló 1": [
-        "Konnektorok mennek",
-        "Kapcsolók mennek",
-        "Nyílászárók jól zárnak",
-        "Ajtó jól zár",
-        "Burkolatok rendben",
-        "Burkolatok sérülésmentes",
-        "Festési hibák",
-        "Falak egyenessége, repedések"
-    ],
-    "Háló 2": [
-        "Konnektorok mennek",
-        "Kapcsolók mennek",
-        "Nyílászárók jól zárnak",
-        "Ajtó jól zár",
-        "Burkolatok rendben",
-        "Burkolatok sérülésmentes",
-        "Festési hibák",
-        "Falak egyenessége, repedések"
-    ],
-    "Nappali": [
-        "Konnektorok mennek",
-        "Kapcsolók mennek",
-        "Nyílászárók jól zárnak",
-        "Ajtók jól zárnak",
-        "Burkolatok rendben",
-        "Burkolatok sérülésmentes",
-        "Festési hibák",
-        "Falak egyenessége, repedések",
-        "Elektromos kiállások a helyükön vannak"
-    ],
-    "Kamra / Gépészet – Helyiség": [
-        "Konnektorok mennek",
-        "Kapcsolók mennek",
-        "Nyílászárók jól zárnak",
-        "Ajtó jól zár",
-        "Burkolatok rendben",
-        "Festési hibák"
-    ],
-    "Kamra / Gépészet – Gépészet": [
-        "Hőszivattyú működik, nincs hibakód",
-        "Padlófűtési körök rendben",
-        "Fűtési rendszer nyomása megfelelő",
-        "Termosztát működik",
-        "Elektromos elosztótábla feliratozása helyes",
-        "Fi-relé leold és visszakapcsolható",
-        "Kondenzvíz elvezetés működik",
-        "Vízóra rendben, nincs szivárgás"
-    ],
-    "Konyha (bútor nélkül)": [
-        "Konnektorok mennek",
-        "Kapcsolók mennek",
-        "Burkolatok rendben",
-        "Burkolatok sérülésmentes",
-        "Festési hibák",
-        "Víz jön",
-        "Víz megy",
-        "Csaptelep stabil (ha van)",
-        "Csőkiállások sérülésmentesek",
-        "Lejtés megfelelő",
-        "Mosogatógép kiállás rendben",
-        "Víz / szennyvíz kiállások a helyükön vannak",
-        "Elektromos kiállások a tervezett helyen"
-    ],
-    "Általános": [
-        "Villanyóra állás rögzítve",
-        "Kulcsok / távirányítók / tartozékok átadva",
-        "Minden ajtó és ablak kilincs stabil",
-        "Küszöbök sértetlenek",
-        "Bejárati ajtó jól zár",
-        "Erkély / terasz vízelvezetés működik (ha van)"
-    ]
-};
+let baseData = {};      // Loaded from JSON
+let savedData = {};     // Loaded from localStorage
 
-// Load from localStorage or fall back to defaults
-let data = JSON.parse(localStorage.getItem("checklistDataV2") || JSON.stringify(initialData));
+async function loadBaseJSON() {
+    const res = await fetch("checklist.json");
+    baseData = await res.json();
 
-function save() {
-    localStorage.setItem("checklistDataV2", JSON.stringify(data));
+    savedData = JSON.parse(localStorage.getItem("checklistState") || "{}");
+
+    mergeBaseIntoSaved();
+    render();
+}
+
+function mergeBaseIntoSaved() {
+    Object.keys(baseData).forEach(section => {
+        if (!savedData[section]) savedData[section] = {};
+
+        baseData[section].forEach(item => {
+            if (!(item in savedData[section])) {
+                savedData[section][item] = false; // default unchecked
+            }
+        });
+    });
+
+    localStorage.setItem("checklistState", JSON.stringify(savedData));
+}
+
+function saveState() {
+    localStorage.setItem("checklistState", JSON.stringify(savedData));
 }
 
 function render() {
     const container = document.getElementById("checklist");
     container.innerHTML = "";
 
-    Object.keys(data).forEach(section => {
+    Object.keys(savedData).forEach(section => {
         const div = document.createElement("div");
         div.className = "section";
 
-        const title = document.createElement("h2");
-        title.textContent = section;
-        div.appendChild(title);
+        const h2 = document.createElement("h2");
+        h2.textContent = section;
+        div.appendChild(h2);
 
-        data[section].forEach((item, index) => {
+        Object.keys(savedData[section]).forEach(item => {
             const row = document.createElement("div");
             row.className = "item";
 
@@ -201,34 +77,24 @@ function render() {
 
             const box = document.createElement("input");
             box.type = "checkbox";
-
-            // Checked state stored as "✔️ Item text"
-            const checked = item.startsWith("✔️ ");
-            box.checked = checked;
-
-            const label = document.createElement("span");
-            label.textContent = checked ? item.substring(3) : item;
-
+            box.checked = savedData[section][item];
             box.onchange = () => {
-                if (box.checked) {
-                    data[section][index] = "✔️ " + label.textContent;
-                } else {
-                    data[section][index] = label.textContent;
-                }
-                save();
-                render();
+                savedData[section][item] = box.checked;
+                saveState();
             };
 
+            const span = document.createElement("span");
+            span.textContent = item;
+
             left.appendChild(box);
-            left.appendChild(label);
+            left.appendChild(span);
 
             const del = document.createElement("button");
             del.className = "delete-btn";
             del.textContent = "✕";
-
             del.onclick = () => {
-                data[section].splice(index, 1);
-                save();
+                delete savedData[section][item];
+                saveState();
                 render();
             };
 
@@ -237,19 +103,21 @@ function render() {
             div.appendChild(row);
         });
 
-        // Add new item field
+        // Add new item box
         const addBox = document.createElement("div");
         addBox.className = "add-box";
 
         const input = document.createElement("input");
-        input.placeholder = "Add new item...";
+        input.placeholder = "Add new item…";
 
         const btn = document.createElement("button");
         btn.textContent = "+";
         btn.onclick = () => {
-            if (!input.value.trim()) return;
-            data[section].push(input.value.trim());
-            save();
+            const val = input.value.trim();
+            if (!val) return;
+
+            savedData[section][val] = false;
+            saveState();
             render();
         };
 
@@ -261,7 +129,7 @@ function render() {
     });
 }
 
-render();
+loadBaseJSON();
 </script>
 
 </body>
