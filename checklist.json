@@ -33,16 +33,8 @@
     "Elektromos kiállások a helyükön vannak"
   ],
 
-  "Kamra / Gépészet – Helyiség": [
-    "Konnektorok mennek",
-    "Kapcsolók mennek",
-    "Nyílászárók jól zárnak",
-    "Ajtó jól zár",
-    "Burkolatok rendben",
-    "Festési hibák"
-  ],
-
-  "Kamra / Gépészet – Gépészet": [
+  "Kamra – Gépészet": [
+    "Ajtók jól zárnak",
     "Hőszivattyú működik, nincs hibakód",
     "Padlófűtési körök rendben",
     "Fűtési rendszer nyomása megfelelő",
@@ -60,13 +52,21 @@
     "Burkolatok sérülésmentes",
     "Festési hibák",
     "Víz jön",
-    "Víz megy",
-    "Csaptelep stabil (ha van)",
+    "Szennyvíz megy",
     "Csőkiállások sérülésmentesek",
-    "Lejtés megfelelő",
     "Mosogatógép kiállás rendben",
     "Víz / szennyvíz kiállások a helyükön vannak",
     "Elektromos kiállások a tervezett helyen"
+  ],
+
+  "WC (bútor nélkül)": [
+    "Kapcsolók mennek",
+    "Burkolatok rendben",
+    "Burkolatok sérülésmentes",
+    "Festési hibák",
+    "Víz jön",
+    "Szennyvíz megy",
+    "WC tartály működik"
   ],
 
   "Általános": [
