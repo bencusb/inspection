@@ -54,7 +54,7 @@ function render() {
 
             const del = document.createElement("button");
             del.textContent = "✕";
-            del.className = "text-white bg-red-500 hover:bg-red-600 rounded px-2 py-1";
+            del.className = "delete-btn text-white bg-red-500 hover:bg-red-600 rounded px-2 py-1";
             del.onclick = () => {
                 delete savedData[section][item];
                 saveState();
@@ -68,7 +68,7 @@ function render() {
 
         // Add new item box
         const addBox = document.createElement("div");
-        addBox.className = "flex space-x-2";
+        addBox.className = "add-item-form flex space-x-2";
 
         const input = document.createElement("input");
         input.placeholder = "Add new item…";
